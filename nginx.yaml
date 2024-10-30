@@ -17,16 +17,5 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: nginxsdsd
         imagePullPolicy: IfNotPresent
-        env:
-        - name: CRASH_LOOP
-          value: "true"  # Set to "true" to crash; ArgoCD will pick up this change
-        command: ["/bin/sh", "-c"]
-        args:
-        - |
-          if [ "$CRASH_LOOP" = "true" ]; then
-            exit 1;  # Force crash
-          else
-            nginx -g "daemon off;";  # Run normally
-          fi
