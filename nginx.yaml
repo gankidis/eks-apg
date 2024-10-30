@@ -17,5 +17,5 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginxsdsd
+        image: nginx:latest
         imagePullPolicy: IfNotPresent
