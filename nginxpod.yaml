@@ -10,4 +10,14 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: IfNotPresent
-    command: ["false"]  # This command will immediately fail, causing a crash loop
+    env:
+    - name: CRASH_LOOP
+      value: "false"  # Change this to "false" to run normally
+    command: ["/bin/sh", "-c"]
+    args:
+    - |
+      if [ "$CRASH_LOOP" = "true" ]; then
+        exit 1;  # Force crash
+      else
+        nginx -g "daemon off;";  # Run normally
+      fi
