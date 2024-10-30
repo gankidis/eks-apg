@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: CRASH_LOOP
-          value: "false"  # Set to "true" to crash; ArgoCD will pick up this change
+          value: "true"  # Set to "true" to crash; ArgoCD will pick up this change
         command: ["/bin/sh", "-c"]
         args:
         - |
