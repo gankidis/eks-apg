@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: apgspace
+  labels:
+    env: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: CRASH_LOOP
+          value: "false"  # Set to "true" to crash; ArgoCD will pick up this change
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          if [ "$CRASH_LOOP" = "true" ]; then
+            exit 1;  # Force crash
+          else
+            nginx -g "daemon off;";  # Run normally
+          fi
