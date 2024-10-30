@@ -10,3 +10,4 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: IfNotPresent
+    command: ["false"]  # This command will immediately fail, causing a crash loop
