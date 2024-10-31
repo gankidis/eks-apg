@@ -17,5 +17,5 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginxdsfsdf
+        image: nginx:latest
         imagePullPolicy: IfNotPresent
