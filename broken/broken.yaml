@@ -17,7 +17,5 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:latest  # A valid image
-        imagePullPolicy: IfNotPresent
-        command: ["/bin/sh", "-c"]  # Override the default command
-        args: ["exit 1"]  # Causes the container to exit immediately
+        image: nginx:brokenlatest  # A valid image
+        
