@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx-crashloop
   namespace: apgspace
   labels:
-    env: test
+    app: nginx
 spec:
   replicas: 1
   selector:
@@ -17,5 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginxbrokenlatest
+        image: nginx:latest  # A valid image
         imagePullPolicy: IfNotPresent
+        command: ["/bin/sh", "-c"]  # Override the default command
+        args: ["exit 1"]  # Causes the container to exit immediately
