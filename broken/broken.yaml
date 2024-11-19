@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-crashloop
+  name: nginx-broken
   namespace: apgspace
   labels:
     app: nginx
